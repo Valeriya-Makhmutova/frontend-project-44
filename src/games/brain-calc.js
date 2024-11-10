@@ -15,7 +15,7 @@ const playCalc = () => {
     const randomIndex = Math.floor(Math.random() * operators.length);
 
     console.log(`Question: ${randomNumber1} ${operators[randomIndex]} ${randomNumber2}`);
-    const userAnswer = Number(askAnswer());
+    const userAnswer = askAnswer();
 
     if (randomIndex === 0) {
       result = randomNumber1 + randomNumber2;
@@ -25,7 +25,7 @@ const playCalc = () => {
       result = randomNumber1 * randomNumber2;
     }
 
-    if (userAnswer === result) {
+    if (Number(userAnswer) === result) {
       console.log('Correct!');
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${result}'.`);
