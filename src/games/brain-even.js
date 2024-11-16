@@ -1,4 +1,4 @@
-import { greeting, askUserName, askAnswer } from '../cli.js';
+import { greeting, askUserName, askAnswer, checkUserAnswer, isUserWin } from '../cli.js';
 
 const playInBrainEven = () => {
   greeting();
@@ -9,20 +9,16 @@ const playInBrainEven = () => {
 
   for (let i = 0; i < 3; i += 1) {
     const randomNumber = Math.floor(Math.random() * 100);
-    const isEven = randomNumber % 2 === 0 ? 'yes' : 'no';
+    const answer = randomNumber % 2 === 0 ? 'yes' : 'no';
 
     console.log(`Question: ${randomNumber}`);
-    const answer = askAnswer();
-    if (answer === isEven) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${isEven}'.`);
-      console.log(`Let's try again, ${userName}!`);
+    const userAnswer = askAnswer();
+
+    const flag = checkUserAnswer(userAnswer, answer, userName);
+    if (flag === false) {
       break;
     }
-    if (i === 2) {
-      console.log(`Congratulations, ${userName}!`);
-    }
+    isUserWin(i, userName);
   }
 };
 

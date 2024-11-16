@@ -1,8 +1,8 @@
-import { greeting, askUserName, askAnswer } from '../cli.js';
+import { greeting, askUserName, askAnswer, checkUserAnswer, isUserWin } from '../cli.js';
 
 const playCalc = () => {
   const operators = ['+', '-', '*'];
-  let result;
+  let answer;
   greeting();
   const userName = askUserName();
   console.log(`Hello, ${userName}!`);
@@ -18,23 +18,18 @@ const playCalc = () => {
     const userAnswer = askAnswer();
 
     if (randomIndex === 0) {
-      result = randomNumber1 + randomNumber2;
+      answer = randomNumber1 + randomNumber2;
     } else if (randomIndex === 1) {
-      result = randomNumber1 - randomNumber2;
+      answer = randomNumber1 - randomNumber2;
     } else if (randomIndex === 2) {
-      result = randomNumber1 * randomNumber2;
+      answer = randomNumber1 * randomNumber2;
     }
 
-    if (Number(userAnswer) === result) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${result}'.`);
-      console.log(`Let's try again, ${userName}!`);
+    const flag = checkUserAnswer(userAnswer, answer, userName);
+    if (flag === false) {
       break;
     }
-    if (i === 2) {
-      console.log(`Congratulations, ${userName}!`);
-    }
+    isUserWin(i, userName);
   }
 };
 

@@ -1,8 +1,4 @@
-import {
-  greeting,
-  askUserName,
-  askAnswer,
-} from '../cli.js';
+import { greeting, askUserName, askAnswer, checkUserAnswer, isUserWin } from '../cli.js';
 import giveProgression from '../utils/for-brain-progression.js';
 
 const playInBrainProgression = () => {
@@ -19,16 +15,11 @@ const playInBrainProgression = () => {
     const answer = askAnswer();
     const rightAnswer = questionAndAnswer[0];
 
-    if (Number(answer) === rightAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
-      console.log(`Let's try again, ${userName}!`);
+    const flag = checkUserAnswer(answer, rightAnswer, userName);
+    if (flag === false) {
       break;
     }
-    if (i === 2) {
-      console.log(`Congratulations, ${userName}!`);
-    }
+    isUserWin(i, userName);
   }
 };
 

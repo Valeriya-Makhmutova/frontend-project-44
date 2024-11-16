@@ -1,8 +1,4 @@
-import {
-  greeting,
-  askUserName,
-  askAnswer,
-} from '../cli.js';
+import { greeting, askUserName, askAnswer, checkUserAnswer, isUserWin } from '../cli.js';
 import isItPrime from '../utils/for-brain-prime.js';
 
 const playBrainPrime = () => {
@@ -18,16 +14,12 @@ const playBrainPrime = () => {
 
     console.log(`Question: ${randomNumber}`);
     const answer = askAnswer();
-    if (answer === isPrime) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${isPrime}'.`);
-      console.log(`Let's try again, ${userName}!`);
+
+    const flag = checkUserAnswer(answer, isPrime, userName);
+    if (flag === false) {
       break;
     }
-    if (i === 2) {
-      console.log(`Congratulations, ${userName}!`);
-    }
+    isUserWin(i, userName);
   }
 };
 

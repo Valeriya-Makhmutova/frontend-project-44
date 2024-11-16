@@ -1,8 +1,4 @@
-import {
-  greeting,
-  askUserName,
-  askAnswer,
-} from '../cli.js';
+import { greeting, askUserName, askAnswer, checkUserAnswer, isUserWin } from '../cli.js';
 import giveMeGcD from '../utils/for-brain-gcd.js';
 
 const playInBrainGcd = () => {
@@ -20,16 +16,11 @@ const playInBrainGcd = () => {
     const answer = askAnswer();
     const rightAnswer = giveMeGcD(randomNumber1, randomNumber2);
 
-    if (Number(answer) === rightAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
-      console.log(`Let's try again, ${userName}!`);
+    const flag = checkUserAnswer(answer, rightAnswer, userName);
+    if (flag === false) {
       break;
     }
-    if (i === 2) {
-      console.log(`Congratulations, ${userName}!`);
-    }
+    isUserWin(i, userName);
   }
 };
 
