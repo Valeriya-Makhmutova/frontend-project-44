@@ -1,4 +1,6 @@
-import { greeting, askUserName, askAnswer, checkUserAnswer, isUserWin } from '../cli.js';
+import {
+  greeting, askUserName, askAnswer, checkUserAnswer, isUserWin,
+} from '../cli.js';
 import isItPrime from '../utils/for-brain-prime.js';
 
 const playBrainPrime = () => {

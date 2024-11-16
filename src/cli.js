@@ -17,7 +17,7 @@ export const askAnswer = () => {
 
 export const checkUserAnswer = (userAnswer, correctAnswer, userName) => {
   let result;
-  if (userAnswer == correctAnswer) {
+  if (String(userAnswer) === String(correctAnswer)) {
     console.log('Correct!');
   } else {
     console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
@@ -25,10 +25,10 @@ export const checkUserAnswer = (userAnswer, correctAnswer, userName) => {
     result = false;
   }
   return result;
-}
+};
 
 export const isUserWin = (i, userName) => {
   if (i === 2) {
     console.log(`Congratulations, ${userName}!`);
   }
-}
+};

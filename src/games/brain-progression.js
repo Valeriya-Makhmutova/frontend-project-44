@@ -1,4 +1,6 @@
-import { greeting, askUserName, askAnswer, checkUserAnswer, isUserWin } from '../cli.js';
+import {
+  greeting, askUserName, askAnswer, checkUserAnswer, isUserWin,
+} from '../cli.js';
 import giveProgression from '../utils/for-brain-progression.js';
 
 const playInBrainProgression = () => {
