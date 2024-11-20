@@ -1,13 +1,17 @@
-import {
-  sayHi, launchTheGame,
-} from '../cli.js';
+import { launchTheGame } from '../index.js';
 
 const playInBrainEven = () => {
-  const userName = sayHi();
+  const task = 'Answer "yes" if the number is even, otherwise answer "no".';
+  const dataForTask = [];
 
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  for (let i = 0; i < 3; i += 1) {
+    const randomNumber = Math.floor(Math.random() * 50) + 1;
+    const question = `${randomNumber}`;
+    const rightAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
+    dataForTask.push([question, rightAnswer]);
+  }
 
-  launchTheGame(['brainEven', userName]);
+  launchTheGame([task, dataForTask]);
 };
 
 export default playInBrainEven;

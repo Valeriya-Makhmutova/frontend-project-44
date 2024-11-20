@@ -1,13 +1,28 @@
-import {
-  sayHi, launchTheGame,
-} from '../cli.js';
+import { launchTheGame } from '../index.js';
 
 const playCalc = () => {
-  const userName = sayHi();
+  const task = 'What is the result of the expression?';
+  const operators = ['+', '-', '*'];
+  const dataForTask = [];
+  let rightAnswer;
 
-  console.log('What is the result of the expression?');
+  for (let i = 0; i < 3; i += 1) {
+    const randomNumber1 = Math.floor(Math.random() * 50) + 1;
+    const randomNumber2 = Math.floor(Math.random() * 10);
+    const randomIndex = Math.floor(Math.random() * operators.length);
 
-  launchTheGame(['brainCalc', userName]);
+    const question = `${randomNumber1} ${operators[randomIndex]} ${randomNumber2}`;
+
+    if (randomIndex === 0) {
+      rightAnswer = randomNumber1 + randomNumber2;
+    } else if (randomIndex === 1) {
+      rightAnswer = randomNumber1 - randomNumber2;
+    } else if (randomIndex === 2) {
+      rightAnswer = randomNumber1 * randomNumber2;
+    }
+    dataForTask.push([question, rightAnswer]);
+  }
+  launchTheGame([task, dataForTask]);
 };
 
 export default playCalc;
