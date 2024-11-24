@@ -1,17 +1,19 @@
 import { launchTheGame } from '../index.js';
+import giveRandomNumber from '../utils/give-random-number.js';
+
+const isEven = (number) => (number % 2 === 0 ? 'yes' : 'no');
+
+const task = 'Answer "yes" if the number is even, otherwise answer "no".';
+const UPPER_LIMIT_NUMBER = 50;
 
 const playInBrainEven = () => {
-  const task = 'Answer "yes" if the number is even, otherwise answer "no".';
-  const dataForTask = [];
-
-  for (let i = 0; i < 3; i += 1) {
-    const randomNumber = Math.floor(Math.random() * 50) + 1;
+  const giveQuestionAndAnswer = () => {
+    const randomNumber = giveRandomNumber(UPPER_LIMIT_NUMBER);
     const question = `${randomNumber}`;
-    const rightAnswer = randomNumber % 2 === 0 ? 'yes' : 'no';
-    dataForTask.push([question, rightAnswer]);
-  }
-
-  launchTheGame([task, dataForTask]);
+    const rightAnswer = isEven(randomNumber);
+    return [question, rightAnswer];
+  };
+  launchTheGame([task, giveQuestionAndAnswer]);
 };
 
 export default playInBrainEven;

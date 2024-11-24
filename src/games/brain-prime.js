@@ -1,18 +1,18 @@
 import { launchTheGame } from '../index.js';
 import isItPrime from '../utils/for-brain-prime.js';
+import giveRandomNumber from '../utils/give-random-number.js';
+
+const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const UPPER_LIMIT_NUMBER = 50;
 
 const playBrainPrime = () => {
-  const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-
-  const dataForTask = [];
-
-  for (let i = 0; i < 3; i += 1) {
-    const randomNumber1 = Math.floor(Math.random() * 50) + 1;
+  const giveQuestionAndAnswer = () => {
+    const randomNumber1 = giveRandomNumber(UPPER_LIMIT_NUMBER);
     const question = `${randomNumber1}`;
     const rightAnswer = isItPrime(randomNumber1) === true ? 'yes' : 'no';
-    dataForTask.push([question, rightAnswer]);
-  }
-  launchTheGame([task, dataForTask]);
+    return [question, rightAnswer];
+  };
+  launchTheGame([task, giveQuestionAndAnswer]);
 };
 
 export default playBrainPrime;
