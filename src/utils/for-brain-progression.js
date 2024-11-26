@@ -1,24 +1,12 @@
-import giveRandomNumber from './give-random-number.js';
-
-const giveProgression = (minLength, maxLength, rangeForFirstNumber, difference) => {
+const giveProgression = (length, firstNumber, difference) => {
   const resultArray = [];
+  resultArray.push(firstNumber);
 
-  const randomLength = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
-  const randomDifference = giveRandomNumber(difference);
-  const randomFirstNumber = giveRandomNumber(rangeForFirstNumber);
-
-  let currentNumber = 0;
-
-  for (let i = 0; i < randomLength; i += 1) {
-    if (i === 0) {
-      currentNumber += randomFirstNumber;
-      resultArray.push(randomFirstNumber);
-    } else {
-      currentNumber += randomDifference;
-      resultArray.push(currentNumber);
-    }
+  let currentNumber = firstNumber;
+  for (let i = 1; i < length; i += 1) {
+    currentNumber += difference;
+    resultArray.push(currentNumber);
   }
-
   return resultArray;
 };
 

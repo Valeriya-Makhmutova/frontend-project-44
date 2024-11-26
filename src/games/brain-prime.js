@@ -9,7 +9,7 @@ const playBrainPrime = () => {
   const giveQuestionAndAnswer = () => {
     const randomNumber1 = giveRandomNumber(UPPER_LIMIT_NUMBER);
     const question = `${randomNumber1}`;
-    const rightAnswer = isItPrime(randomNumber1) === true ? 'yes' : 'no';
+    const rightAnswer = isItPrime(randomNumber1) ? 'yes' : 'no';
     return [question, rightAnswer];
   };
   launchTheGame([task, giveQuestionAndAnswer]);

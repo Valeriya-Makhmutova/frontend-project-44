@@ -17,17 +17,20 @@ const playInBrainProgression = () => {
     // рандомная длина в диапазоне чисел, нужно ещё указать
     // диапазон для первого члена прогрессии (от 1 до *число*),
     // диапазон для разницы между числами (от 1 до *число*)
+    const randomLength = Math.floor(Math.random() * (MAX_LENGHT - MIN_LENGTH + 1)) + MIN_LENGTH;
+    const randomDifference = giveRandomNumber(RANGE_FOR_DIFFERENCE);
+    const randomFirstNumber = giveRandomNumber(RANGE_FOR_FIRST_PROGRESSION_NUM);
+
     const progression = giveProgression(
-      MIN_LENGTH,
-      MAX_LENGHT,
-      RANGE_FOR_FIRST_PROGRESSION_NUM,
-      RANGE_FOR_DIFFERENCE,
+      randomLength,
+      randomFirstNumber,
+      randomDifference,
     );
     const randomIndexPlase = giveRandomNumber(progression.length - 1);
     const rigthAnswer = progression[randomIndexPlase];
     progression[randomIndexPlase] = signForMissingPlace;
 
-    const question = `${progression.join(' ')}`;
+    const question = progression.join(' ');
     return [question, rigthAnswer];
   };
   launchTheGame([task, giveQuestionAndAnswer]);

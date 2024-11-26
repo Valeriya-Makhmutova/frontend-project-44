@@ -6,12 +6,19 @@ const operators = ['+', '-', '*'];
 
 const calculateThis = (operatorIndex, number1, number2) => {
   let rightAnswer;
-  if (operatorIndex === 0) {
-    rightAnswer = number1 + number2;
-  } else if (operatorIndex === 1) {
-    rightAnswer = number1 - number2;
-  } else if (operatorIndex === 2) {
-    rightAnswer = number1 * number2;
+
+  switch (operatorIndex) {
+    case 0:
+      rightAnswer = number1 + number2;
+      break;
+    case 1:
+      rightAnswer = number1 - number2;
+      break;
+    case 2:
+      rightAnswer = number1 * number2;
+      break;
+    default:
+      rightAnswer = undefined;
   }
   return rightAnswer;
 };
